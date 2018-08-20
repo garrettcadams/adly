@@ -1,0 +1,18 @@
+DirectoryIndex index.php
+
+#<Files ~ "\.(woff2|woff|ttf|otf|svg)$">
+#    Header add Access-Control-Allow-Origin "*"
+#</Files>
+
+# No directory listings
+IndexIgnore *
+
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+
+    # Comment the following line if you have not a .well-known directory in the root folder.
+    RewriteRule ^(\.well-known/.*)$ $1 [L]
+
+    RewriteRule    ^$    webroot/    [L]
+    RewriteRule    (.*) webroot/$1    [L]
+</IfModule>
